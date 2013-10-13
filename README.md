@@ -2,6 +2,7 @@
 Switcheroo is a product demo bar designed for showcasing your products (themes, websites, plugins) in a nice and sleek way.
 
 ## Demo?
+Demo with QR Code and flat scrollbar: [http://bradleyklco.com/demo/switcheroo/](http://bradleyklco.com/demo/switcheroo/)
 Switcheroo demo can be found here: [http://switcheroo.getkodo.com/](http://switcheroo.getkodo.com/)
 
 ## Browsers supported?
