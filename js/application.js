@@ -158,7 +158,7 @@ $( '.product-switcher a' ).on( 'click', function() {
 		setTimeout( 'switcher_iframe_height()', 2500 );
 
 	}
-	$('#qrcode').slideUp("fast", function () { $('.qrcode-btn').removeClass('active'); $('#qrcode').html(''); });
+	$('#qrcode').slideUp("fast", function () { $('.qrcode-btn').removeClass('current'); $('#qrcode').html(''); });
 	return false;
 
 });
@@ -196,55 +196,50 @@ $( document ).ready( function() {
 		trigger   : 'hover'
 	});
 
-});
-
-$( '.product' ).click( function() {
-
-	$current_product = $( this ).data( 'id' );
-
-	if ( $current_product in $products ) {
-
-		$( 'body' ).toggleClass( 'toggle' );
-
-		$( '.preloader, .preloading-icon' ).fadeIn( 400 );
-
-		$( '.product-iframe' ).load( function() {
-
-			$( '.preloader, .preloading-icon' ).fadeOut( 400 );
-
-		});
-
-		$( '.product-switcher a' ).html( 
-			$products[ $current_product ].name + ' <span class="badge">' + $products[ $current_product ].tag + '</span>'
-		);
-
-		$( '.product-iframe' ).attr( 'src', $products[ $current_product ].url );
-
-		location.hash = '#' + $current_product;
-
-	}
-
-	return false;
-
-});
 
 
-
-
-
-
-
-// QR Code btn on click
-$('.qrcode-btn').click(function () {
-    if ($current_product in $products) {
-		if ($('#qrcode').is(':visible')) {
-			$('.qrcode-btn').removeClass('active');
-			$('#qrcode').slideUp("slow", function () { $('#qrcode').html('') });
-		} else {
-			$('.qrcode-btn').addClass('active');
-			var qrcode = 'http://chart.apis.google.com/chart?chs=547x547&cht=qr&chl=' + escape($products[$current_product].url);
-			$('#qrcode').html('<img src="' + qrcode + '" />').slideDown('slow');
+	$( '.product' ).click( function() {
+	
+		$current_product = $( this ).data( 'id' );
+	
+		if ( $current_product in $products ) {
+	
+			$( 'body' ).toggleClass( 'toggle' );
+	
+			$( '.preloader, .preloading-icon' ).fadeIn( 400 );
+	
+			$( '.product-iframe' ).load( function() {
+	
+				$( '.preloader, .preloading-icon' ).fadeOut( 400 );
+	
+			});
+	
+			$( '.product-switcher a' ).html( 
+				$products[ $current_product ].name + ' <span class="badge">' + $products[ $current_product ].tag + '</span>'
+			);
+	
+			$( '.product-iframe' ).attr( 'src', $products[ $current_product ].url );
+	
+			location.hash = '#' + $current_product;
+	
 		}
-    }
-    return false;
+	
+		return false;
+	
+	});
+	
+	// QR Code btn on click
+	$('.qrcode-btn').click(function () {
+	    if ($current_product in $products) {
+			if ($('#qrcode').is(':visible')) {
+				$('.qrcode-btn').removeClass('current');
+				$('#qrcode').slideUp("slow", function () { $('#qrcode').html('') });
+			} else {
+				$('.qrcode-btn').addClass('current');
+				var qrcode = 'http://chart.apis.google.com/chart?chs=547x547&cht=qr&chl=' + escape($products[$current_product].url);
+				$('#qrcode').html('<img src="' + qrcode + '" />').slideDown('slow');
+			}
+	    }
+	    return false;
+	});
 });
