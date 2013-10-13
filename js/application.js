@@ -26,10 +26,6 @@ $.each( $products, function( key, object ) {
 
 });
 
-// Hey, don't iframe my iframe!
-if ( top !== self ) 
-	top.location.replace( self.location.href );
-
 // Close bar on click
 $( '.purchase-btn' ).click( function() {
 
@@ -158,6 +154,7 @@ $( '.product-switcher a' ).on( 'click', function() {
 		setTimeout( 'switcher_iframe_height()', 2500 );
 
 	}
+
 	$('#qrcode').slideUp("fast", function () { $('.qrcode-btn').removeClass('current'); $('#qrcode').html(''); });
 	return false;
 
@@ -177,9 +174,15 @@ $( document ).ready( function() {
 
 	if ( ! ( $current_product in $products ) || $current_product === '' ) {
 
-		for (var key in $products ) if ( $products.hasOwnProperty( key ) ) break;
+		$current_product = location.search.replace('?product=', '');
 
-		$current_product = key;
+		if ( ! ( $current_product in $products ) || $current_product === '' ) {
+
+			for (var key in $products ) if ( $products.hasOwnProperty( key ) ) break;
+
+			$current_product = key;
+
+		}
 
 	}
 
@@ -195,6 +198,7 @@ $( document ).ready( function() {
 		placement : 'auto bottom',
 		trigger   : 'hover'
 	});
+
 
 
 
