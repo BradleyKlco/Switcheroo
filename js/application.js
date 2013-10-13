@@ -158,7 +158,7 @@ $( '.product-switcher a' ).on( 'click', function() {
 		setTimeout( 'switcher_iframe_height()', 2500 );
 
 	}
-
+	$('#qrcode').slideUp("fast", function () { $('.qrcode-btn').removeClass('active'); $('#qrcode').html(''); });
 	return false;
 
 });
@@ -226,4 +226,25 @@ $( '.product' ).click( function() {
 
 	return false;
 
+});
+
+
+
+
+
+
+
+// QR Code btn on click
+$('.qrcode-btn').click(function () {
+    if ($current_product in $products) {
+		if ($('#qrcode').is(':visible')) {
+			$('.qrcode-btn').removeClass('active');
+			$('#qrcode').slideUp("slow", function () { $('#qrcode').html('') });
+		} else {
+			$('.qrcode-btn').addClass('active');
+			var qrcode = 'http://chart.apis.google.com/chart?chs=547x547&cht=qr&chl=' + escape($products[$current_product].url);
+			$('#qrcode').html('<img src="' + qrcode + '" />').slideDown('slow');
+		}
+    }
+    return false;
 });
