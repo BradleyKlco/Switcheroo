@@ -3,6 +3,7 @@
 $envato_user   = ''; //your envato username
 $envato_market = ''; //codecanyon //themeforest
 $default_item  = ''; //default item
+$force_resp = FALSE; //force all items to be responsive
 
 /* Stop Editing */
 
@@ -24,6 +25,7 @@ if (!empty($ch_data)) {
 	//displays on screen only
     echo '<h3>products.js now contains:</h3>';
 
+
     for ($i = 0; $i <= (count($json_data) - 1); $i++) {
 
         //turn product page url into preview page url
@@ -38,6 +40,17 @@ if (!empty($ch_data)) {
         $tag = ''; //set empty
         $tag = current(explode('/', $json_data[$i]['category']));
         if ($tag == 'wordpress') $tag = 'WP';
+        if ($tag == 'php-scripts') $tag = 'PHP';
+
+		//add un|responsive support
+		if (strlen(strstr(strtolower($json_data[$i]['tags']),'responsive'))>0) {
+			$responsive = 'true';
+		} else {
+			$responsive = 'false';
+		}
+
+		//force all to be responsive
+		if ($force_resp) $responsive = 'true';
 
         $name = preg_replace('/_+/', '_', preg_replace('/[^\da-z]/i', '_', strtolower($json_data[$i]['item'])));
         $products .= '
@@ -46,7 +59,8 @@ if (!empty($ch_data)) {
 		tag:"'.$tag.'",
 		img:"'.$json_data[$i]['live_preview_url'].'",
 		url:"'.$demo_url['0'].'",
-		purchase:"'.$json_data[$i]['url'].'?ref='.$envato_user.'"
+		purchase:"'.$json_data[$i]['url'].'?ref='.$envato_user.'",
+		responsive: '.$responsive.'
 	},'."\n";
 
 		//displays on screen item being added
