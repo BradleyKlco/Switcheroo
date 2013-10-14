@@ -490,13 +490,141 @@ body.dark,
 
 
 
+/* --------------------------------------*/
+/* --------->>> CHILLED SKIN <<<---------*/
+/* --------------------------------------*/
 
+.chilled .product-switcher a:before { content: '' }
+.chilled .header-btn.current a {
+    background: #6fc8f9;
+    border: 1px solid #459ECF;
+    text-decoration: none;
+}
+.chilled .product-switcher .badge {
+    background: #6fc8f9;
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 9px;
+    font-weight: 300;
+    position: absolute;
+    top: 22px;
+    right: -40px;
+    border: 0 none;
+}
+.chilled .product .badge {
+    background: #6fc8f9;
+    border: 1px solid #459ECF;
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+.chilled .preloading-icon {
+    background: #6fc8f9;
+    border: 1px solid #459ECF;
+    display: block;
+    height: 48px;
+    left: 50%;
+    margin: -24px 0 0 -24px;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    width: 48px;
+    z-index: 2;
+}
+.chilled .product-switcher a:after {
+    content: '\f107' !important;
+    font-family: FontAwesome;
+    font-size: 16px;
+    right: 20px !important;
+    position: absolute !important;
+    top: 6px !important;
+}
+.chilled .product-switcher a {
+    position: relative color:#999 !important;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    padding: 5px 40px 5px 20px !important;
+    transition: background-color 0.4s,border-color 0.4s,color 0.4s;
+    -moz-transition: background-color 0.4s,border-color 0.4s,color 0.4s;
+    -o-transition: background-color 0.4s,border-color 0.4s,color 0.4s;
+    -webkit-transition: background-color 0.4s,border-color 0.4s,color 0.4s;
+    border-right: 1px solid #ddd;
+}
+.chilled .product-switcher a:hover {
+    border-right: 1px solid #ddd;
+    color: #333 !important;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+}
+.chilled .product-switcher .badge {
+    right: -45px !important;
+    top: 21px !important;
+}
+.chilled .header-btn a {
+    border: 1px solid #459ECF;
+    background: transparent !important;
+    border: 0 !important;
+    transition: background-color 0.4s,border-color 0.4s,color 0.4s;
+    -moz-transition: background-color 0.4s,border-color 0.4s,color 0.4s;
+    -o-transition: background-color 0.4s,border-color 0.4s,color 0.4s;
+    -webkit-transition: background-color 0.4s,border-color 0.4s,color 0.4s;
+}
+.chilled .header-btn a:hover { background: #6fc8f9 !important }
+.chilled .purchase-btn.header-btn { margin: 20px 20px 0 0 }
+.chilled .purchase-btn.header-btn a {
+    background: #f06d06 !important;
+    border: 0;
+    border-radius: 4px;
+    color: #FFF;
+    display: inline;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    padding: 6px 12px 7px;
+    text-transform: uppercase;
+}
+.chilled .purchase-btn.header-btn a:hover {
+    background: #6fc8f9 !important;
+    border: 0;
+    border-radius: 4px;
+    color: #FFF;
+    display: inline;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    padding: 6px 12px 7px;
+    text-transform: uppercase;
+}
 
+/* --------------------------------------*/
+/* ----------->>> QR Code <<<------------*/
+/* --------------------------------------*/
 
+#qrcode {
+    position: fixed;
+    right: 12px;
+    z-index: 1;
+    border: 1px solid #E6E6E6;
+    border-top: 0 none;
+    display: none;
+}
+#qrcode img {
+    margin: 0 auto;
+    display: block;
+}
 
+/* --------------------------------------*/
+/* ----------->>> Scrollbar <<<----------*/
+/* --------------------------------------*/
 
-#qrcode { position: fixed; right: 12px; z-index: 1; border: 1px solid #E6E6E6; border-top: 0 none; display:none; }
-#qrcode img { margin: 0 auto; display: block; }
 ::-webkit-scrollbar {  width: 12px; height: 10px; }
 ::-webkit-scrollbar-thumb { background-color: #459ECF; -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.10),inset 0 -1px 0 rgba(0, 0, 0, 0.07); }
 ::-webkit-scrollbar-thumb:hover { background-color: #6fc8f9; }
