@@ -5,10 +5,12 @@ if (!function_exists('selected')) { function selected($saved, $value) { if ($sav
 
 $envato_user   = trim(clean($_POST['user'], '16'));
 $envato_market = trim(clean($_POST['market'], '16'));
+$force_repsonsive = trim(clean($_POST['resp'], '1'));
 $default_item  = ''; //default item
 
 ?>
 <h1>Switcheroo product.js maker</h1>
+<p>If your item is responsive, make sure it is tagged as such on your Envato listing!!</p>
 <form action="" method="POST">
 <input type="text" name="user" value="<?php if (!empty($envato_user)) echo $envato_user; ?>" placeholder="Envato User Name"/>
 <select name="market">
@@ -20,7 +22,9 @@ $default_item  = ''; //default item
 	<option value="graphicriver" <?php echo selected($envato_market,'graphicriver'); ?>>GraphicRiver</option>
 	<option value="3docean" <?php echo selected($envato_market,'3docean'); ?>>3D Ocean</option>
 	<option value="photodune" <?php echo selected($envato_market,'photodune'); ?>>PhotoDune</option>
-</select>
+</select><br />
+<label for="resp">Force All to be responsive? </label>
+<input type="checkbox" name="resp" id="resp" value="1" /><br />
 <input type="submit" value="Submit" />
 </form>
 <?php
@@ -42,6 +46,13 @@ if (!empty($ch_data)) {
         $tag = ''; //set empty
         $tag = current(explode('/', $json_data[$i]['category']));
         if ($tag == 'wordpress') $tag = 'WP';
+        if ($tag == 'php-scripts') $tag = 'PHP';
+		if (strlen(strstr(strtolower($json_data[$i]['tags']),'responsive'))>0) {
+			$responsive = 'true';
+		} else {
+			$responsive = 'false';
+		}
+		if ($force_repsonsive) $responsive = 'true';
         $name = preg_replace('/_+/', '_', preg_replace('/[^\da-z]/i', '_', strtolower($json_data[$i]['item'])));
         $products .= '
 	'.$name.' : {
@@ -49,7 +60,8 @@ if (!empty($ch_data)) {
 		tag:"'.$tag.'",
 		img:"'.$json_data[$i]['live_preview_url'].'",
 		url:"'.$demo_url['0'].'",
-		purchase:"'.$json_data[$i]['url'].'?ref='.$envato_user.'"
+		purchase:"'.$json_data[$i]['url'].'?ref='.$envato_user.'",
+		responsive: '.$responsive.'
 	},'."\n";
     } //end FOR loop
     $products .= "\n".'};';
