@@ -127,9 +127,9 @@ $( document ).ready( function() {
 
 	//hide | unhide responsive buttons
 	if (!$products[ $current_product ].responsive) {
-		$('.desktop-btn, .tablet-btn, .mobile-btn').removeClass('hidden-xs').hide();
+		$('.desktop-btn, .tablet-btn, .mobile-btn .qrcode-btn').removeClass('hidden-xs').hide();
 	} else {
-		$('.desktop-btn, .tablet-btn, .mobile-btn').addClass('hidden-xs').show();
+		$('.desktop-btn, .tablet-btn, .mobile-btn .qrcode-btn').addClass('hidden-xs').show();
 	}
 });
 $( '.product' ).click( function() {
@@ -149,9 +149,9 @@ $( '.product' ).click( function() {
 
 	//hide | unhide responsive buttons
 	if (!$products[ $current_product ].responsive) {
-		$('.desktop-btn, .tablet-btn, .mobile-btn').removeClass('hidden-xs').hide();
+		$('.desktop-btn, .tablet-btn, .mobile-btn, .qrcode-btn').removeClass('hidden-xs').hide();
 	} else {
-		$('.desktop-btn, .tablet-btn, .mobile-btn').addClass('hidden-xs').show();
+		$('.desktop-btn, .tablet-btn, .mobile-btn .qrcode-btn').addClass('hidden-xs').show();
 	}
 	return false;
 });
