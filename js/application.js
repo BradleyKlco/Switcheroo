@@ -124,6 +124,13 @@ $( document ).ready( function() {
 		placement : 'auto bottom',
 		trigger   : 'hover'
 	});
+
+	//hide | unhide responsive buttons
+	if (!$products[ $current_product ].responsive) {
+		$('.desktop-btn, .tablet-btn, .mobile-btn').removeClass('hidden-xs').hide();
+	} else {
+		$('.desktop-btn, .tablet-btn, .mobile-btn').addClass('hidden-xs').show();
+	}
 });
 $( '.product' ).click( function() {
 	$current_product = $( this ).data( 'id' );
@@ -139,8 +146,16 @@ $( '.product' ).click( function() {
 		$( '.product-iframe' ).attr( 'src', $products[ $current_product ].url );
 		location.hash = '#' + $current_product;
 	}
+
+	//hide | unhide responsive buttons
+	if (!$products[ $current_product ].responsive) {
+		$('.desktop-btn, .tablet-btn, .mobile-btn').removeClass('hidden-xs').hide();
+	} else {
+		$('.desktop-btn, .tablet-btn, .mobile-btn').addClass('hidden-xs').show();
+	}
 	return false;
 });
+
 // QR Code btn on click
 $('.qrcode-btn').click(function () {
     if ($current_product in $products) {
